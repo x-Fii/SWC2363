@@ -32,15 +32,15 @@
     <div style="border: 1px solid #ccc; padding: 5px; display: inline-block;background-color:rgb(255, 255, 255);">
         <h2>Online Vacation Budget Calculator</h2>
         <form method="post" action="">
-            <label for="passenger_name">Traveller’s Name:</label>
+            <label for="passenger_name">Traveller’s Name:</label> //utk input nama penumpang
             <br>
             <input type="text" name="passenger_name" required>
             <br><br>
-            <label for="destination">Destination Location:</label>
+            <label for="destination">Destination Location:</label> //utk input tmpt
             <br>
             <sub>Pick one location available below</sub>
             <br>
-            <select name="destination" required>
+            <select name="destination" required> //pilih dari sii
                 <option value="Paris">Paris</option>
                 <option value="Tokyo">Tokyo</option>
                 <option value="London">London</option>
@@ -48,15 +48,15 @@
                 <option value="Singapore">Singapore</option>
             </select>
             <br><br>
-            <label for="number_of_travellers">Number of Travellers:</label>
+            <label for="number_of_travellers">Number of Travellers:</label> //utk input jumlah org
             <br>
             <input type="number" name="number_of_travellers" required>
             <br><br>
-            <label for="number_of_days">Number of Days:</label>
+            <label for="number_of_days">Number of Days:</label> //utk input jumlah hari
             <br>
             <input type="number" name="number_of_days" required>
             <br><br>
-            <label for="accommodation_type">Accommodation Type:</label>
+            <label for="accommodation_type">Accommodation Type:</label> //hotel choice
             <br>
             <select name="accommodation_type" required>
                 <option value="Budget">Budget</option>
@@ -65,13 +65,13 @@
             </select>
             <br><br>
 
-            <input type="submit" name="calculate" value="Calculate Fare">
+            <input type="submit" name="calculate" value="Calculate Fare"> //button calculate ca chage colour
             <br><br>
         </form>
     </div>
 
     <?php
-    $flightFares = [
+    $flightFares = [ //to pick flight fare based on destination
         "Paris" => 500,
         "Tokyo" => 800,
         "London" => 600,
@@ -79,13 +79,14 @@
         "Singapore" => 600,
     ];
 
-    $dailyExpensesPerPerson = 50;
-    $accommodationCosts = [
+    $dailyExpensesPerPerson = 50; //daily expenses per person
+    $accommodationCosts = [ //accommodation cost based on type
         "Budget" => 50,
         "Standard" => 100,
         "Luxury" => 200,
     ];
 
+    //calc process [flight cost + daily expenses + accommodation cost and discount for more than 4 travellers and return total cost]
     function calculateTotalCost($destination, $numTravellers, $numDays, $accommodationType) {
         global $flightFares, $dailyExpensesPerPerson, $accommodationCosts;
 
@@ -102,7 +103,7 @@
         return $totalCost;
     }
 
-    // Process form submission
+    // Process form submission 
     if (isset($_POST["calculate"])) {
         $passengerName = $_POST["passenger_name"];
         $destination = $_POST["destination"];
@@ -116,7 +117,7 @@
         // Display results
         echo "<h2>Fare Calculation Results</h2>";
         echo "<table>";
-        echo "<tr>
+        echo "<tr> //table header
                 <th>Passenger Name</th>
                 <th>Destination</th>
                 <th>Number of Travellers</th>
@@ -124,7 +125,7 @@
                 <th>Accommodation Type</th>
                 <th>Total Estimated Cost</th>
               </tr>";
-        echo "<tr>
+        echo "<tr> //table data based on form submission
                 <td>{$passengerName}</td>
                 <td>{$destination}</td>
                 <td>{$numTravellers}</td>
@@ -137,6 +138,6 @@
     ?>
 </body>
 <footer>
-    <p><p>Copyright © Fii. 2025.</p></p>
+    <p><p>Copyright © Fii. 2025.</p></p> //test
 </footer>
 </html>
